@@ -29,6 +29,12 @@ lava-dispatcher (2015.11-1) unstable; urgency=medium
 
  -- Neil Williams <codehelp@debian.org>  Mon, 02 Nov 2015 13:35:50 +0000
 
+lava-dispatcher (2015.9-1~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 13 Oct 2015 18:06:14 +0100
+
 lava-dispatcher (2015.9-1) unstable; urgency=medium
 
   * New production release
