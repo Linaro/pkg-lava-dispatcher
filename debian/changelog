@@ -1,3 +1,9 @@
+lava-dispatcher (2015.9-1~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Neil Williams <codehelp@debian.org>  Tue, 13 Oct 2015 18:06:14 +0100
+
 lava-dispatcher (2015.9-1) unstable; urgency=medium
 
   * New production release
