@@ -23,6 +23,7 @@ set -e
 
 # Move this into a debconf question with the dumb dispatcher model
 LAVA_SERVER_IP=`ip addr | awk '{ if ($1 == "inet" && $4 != "host") { gsub("/.*", "", $2); print($2) } }'`
+LAVA_SERVER_IP=`ip addr | awk '{ if ($1 == "inet" && $4 != "host") { gsub("/.*", "", $2); print($2) } }' | head -1`
 
 case "$1" in
     configure)
