@@ -1,3 +1,9 @@
+lava-dispatcher (2016.4-3) unstable; urgency=medium
+
+  * Add python-guestfs as dependency.
+
+ -- Senthil Kumaran S (stylesen) <stylesen@gmail.com>  Mon, 09 May 2016 12:28:28 +0530
+
 lava-dispatcher (2016.4-2) unstable; urgency=medium
 
   * Add extra packages, schroot & bzr, for autopkgtest.
