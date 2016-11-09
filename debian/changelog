@@ -1,3 +1,165 @@
+lava-dispatcher (2016.11-1) unstable; urgency=medium
+
+  * New production release aimed at Stretch.
+    Release details available at:
+    https://projects.linaro.org/browse/LAVA-789?filter=12078
+  * Update compat
+  * Highlights of upstream changes:
+    Ensure namespace is available to the test shell.
+    cpio output is not an error
+    Downgrade message match failure to a warning
+    Fix up usage of LXC with a device
+    Only attempt lxc-destroy if the container exists based on exitstatus.
+    Drop ShellLogger __del__ command
+    Improve accepts for monitored QEMU
+    Strategy needs to check methods, not device_type
+    Support parallel (pbzip2) compressed bzip2 files
+    Allow vendor U-Boot builds using Ctrl interrupts
+    Improve cpio extract command line and error message
+    slave: do not send None as error code
+    slave: send a SIGINT to lava-dispatch to cancel
+    Making target IP and MAC addresses available in lava test shell
+    TestShell: allow multiple test shells
+    Fix kernel message detection for panic
+    testdef: remove unused common data
+    Fix the logic regarding the pipeline building
+    shell: make testdef_index common data a list
+    device/target: allow multiple boot control chars
+    Add 943907AEVAL1F to pyocd deploy supported devices
+    Check if container exists before destroying.
+    Do not generate results.yaml
+    Fix uefi_menu pipeline for fastboot.
+    slave: move tmp files to /var/
+    Add device to lxc only when it is available.
+    device-types: add Amlogic meson8b-odroidc1 board
+    LAVA-755 - use UUID for guest, not label.
+    slave: send an error code when err is not empty
+    Fix git-repos reference in inline test definition.
+    Allow a different bootloader interrupt character
+    Make pipeline logging python3 compatible
+    slave: fix a crash under python3
+    device-types: add Amlogic meson-gxbb-p200 board
+    device-types: add TI da850-lcdk
+    bootloader: add ramdisk_raw option
+    Detect invalid characters in testdefinition name
+    Fix timeout inheritance from job definition blocks
+    Set the right permis when creating the ramdisk dir
+    ci-run: exclude the .eggs directory
+    tests: Close the file descriptors
+    Fix root directory of V2 apache config
+    LAVA-760 - Trim LXC log output
+    Require a summary and description to validate
+    Additional changes for removable media usage
+    Fix extra_options to always be a list of strings
+    Do not set kernel type for all 'kernel' YAML keys
+    Action: re-raised the exception without modification
+    LAVA-748 ensure test definition names are unique
+    Change sample jobs urls to images.v.l.o
+    Allow testdefinitions without run steps
+    Generate the pipeline description on the slave
+    slave: fix the END message parameters
+    Use the QEMU extra options where available
+    slave: resend the END message if the ack was lost
+    slave: send the error file along with the END message
+    Move tmp files to /var/lib/lava/dispatcher/job_id/
+    Only extract the nfsrootfs once.
+    Use the uboot interrupt prompt from templates
+    Improve LXC HiKey support.
+    Don't end test shell at invalid testcase name
+    SignalMatch: simplify and fix exception message
+    Shell: improve report formatting
+    Shell: factorize handling of measurements
+    RetryAction: log errors
+    Shell: factorize signal handling
+    Move override and log_results functions into Action
+    Initial support for PyOCD
+    Use \r\n for newlines
+    Allow guest drive interface to be specified
+    allow-modify functionality added
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 09 Nov 2016 11:56:32 +0000
+
+lava-dispatcher (2016.9-1) unstable; urgency=medium
+
+  * 2016.9 production release
+    Catch the edge case where serial line corruption means we miss the testrun
+    Add support for alternative Test actions
+    Update manpage of lava-slave for configuration change.
+    Allow configuring the slave from file
+    git: use -C instead of --git-dir
+    Allow setting the envrionment on most systems
+    Handle exceptions from subprocess from compression
+    download: don't expand the path when retrying
+    Grab finalize from the root pipeline
+    Log exception as strings and not objects
+    LAVA-740 - export vlan names and interface names
+    Reopen log file when rotating the logs
+    LAVA-699 - Support hi6220-hikey board with lxc
+    Init: remove the right lock file and simplify
+    pipeline:vland: raise JobError if switch_id or port_id is None
+    Remove redundant assignation
+    Allow logging at the validate stage
+    Force the shell to produce an initial prompt
+    Handle errors if the testrun start is omitted.
+    Pipeline parser: sort and reverse in one call
+    logs: remove unused support for local logs
+    slave: put all tmp files into the same directory
+    Power: improve logging message
+    Exclude patterns from description
+    Port lava-slave to Python3
+    ApplyOverlayTftp: remove duplicated untar_file
+    ExportDeviceEnvironment: only source valid shell_file's
+    add LEDE to available distributions
+    Always log the command to be run beforehand.
+  * Update lava-slave file handling
+    The daemon is no longer optional, so remove the
+    old conditions. Add support for the option file in
+    /etc/lava-dispatcher/lava-slave
+  * Add override for new lava-vland-names test helper
+
+ -- Neil Williams <codehelp@debian.org>  Wed, 07 Sep 2016 07:35:09 +0100
+
+lava-dispatcher (2016.8-1) unstable; urgency=medium
+
+  * New production release
+    Only require conversion parameters if using conversion.
+    Support some basic kernel conversion tasks
+    Export the 'secrets' dictionary to the overlay
+    uboot: only log self.errors when it's not empty
+    Enabling NFS only deployment
+    Fix connection_timeout handling for lava-test-shell
+    validate needs to set errors, not raise
+    Fixes for multinode without needing ACK
+    Device environment: fix a crash if env_dut is None
+    Unavailable qemu command should not fail unit tests.
+    Use character_delays instead of character-delays
+    Tests: Use the name defined in the job definition
+    Show when a revision is being applied for VCS
+    Fix bug #2263 - parameters and params reference in job def and test def
+    Improve logging and use lazy logging
+    Log more test results metadata
+    LAVA-708 - Device path should be a list
+    Support kickstart installations on grub, and centos distro type
+    Allow for a prefix with nfsrootfs
+    Finalize: send the job status with the right level
+    log: send the full exception untouched
+    beaglebone-black: update load addresses for larger multiplatform kernels
+    Take into account, device_path that is unset.
+    Fix YAML formatting of wait string log
+    change the result logging format
+    Add sample nexus9 device dictionary.
+    LAVA-701 - Support vendor flashing using fastboot.
+    utils/messages.py: fix out of index error
+    Add support for fixup dictionary and patterns
+    Ensure guest command is available in multinode
+    Stop V2 test shells needing an ACK from the dispatcher
+    logging: add datetime and a better structure
+    Upgrade the failure test case for lavabot
+    First batch of VExpress changes
+    Handle ValueError while waiting
+
+ -- Neil Williams <codehelp@debian.org>  Mon, 08 Aug 2016 08:27:31 +0100
+
 lava-dispatcher (2016.6-2~bpo8+1) jessie-backports; urgency=medium
 
   * Rebuild for jessie-backports.
