@@ -2,8 +2,7 @@ Source: lava-dispatcher
 Section: net
 Priority: optional
 Maintainer: Debian LAVA team <pkg-linaro-lava-devel@lists.alioth.debian.org>
-Uploaders: Antonio Terceiro <terceiro@debian.org>,
- Neil Williams <codehelp@debian.org>,
+Uploaders: Neil Williams <codehelp@debian.org>,
  Fathi Boudra <fabo@debian.org>, Jordi Mallach <jordi@debian.org>,
  Senthil Kumaran S (stylesen) <stylesen@gmail.com>
 Build-Depends: debhelper (>= 8.0.0), dh-python,
@@ -30,7 +29,7 @@ Recommends: ntp, git, kpartx, tftpd-hpa, openbsd-inetd, ser2net,
  qemu-system-x86 (>= 2.8.0) [amd64 i386],
  qemu-system-arm (>= 2.8.0) [amd64 armhf arm64],
  libguestfs-tools [amd64 i386], nfs-kernel-server, rpcbind,
- python-setproctitle, u-boot-tools, unzip, xz-utils, lxc (>= 1:2.0.7),
+ u-boot-tools, unzip, xz-utils, lxc (>= 1:2.0.7),
  debootstrap (>= 1.0.86), bridge-utils, rsync, sshfs, dfu-util
 Suggests: apache2, bzr, android-tools-fsutils | img2simg
 Description: Linaro Automated Validation Architecture dispatcher
