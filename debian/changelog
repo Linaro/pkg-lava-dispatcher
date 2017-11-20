@@ -1,3 +1,11 @@
+lava-dispatcher (2017.11.post1-1) unstable; urgency=medium
+
+  * 2017.11.post1 Hot fix release
+    83419ebd Move lxc-static action to a boot method
+    49185b36 LAVA-1112 support for always-connected devices
+
+ -- Neil Williams <codehelp@debian.org>  Mon, 20 Nov 2017 08:57:33 +0000
+
 lava-dispatcher (2017.11-1) unstable; urgency=medium
 
   * New production release
