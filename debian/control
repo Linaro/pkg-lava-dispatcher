@@ -9,7 +9,7 @@ Build-Depends: debhelper (>= 9.20160709), dh-python,
  python3-sphinx, python-setuptools (>= 3)
 X-Python-Version: 2.7
 Standards-Version: 4.1.1
-Homepage: http://www.linaro.org/projects/test-validation/
+Homepage: https://www.linaro.org/initiatives/lava/
 Vcs-Git: https://github.com/Linaro/pkg-lava-dispatcher.git
 Vcs-Browser: https://github.com/Linaro/pkg-lava-dispatcher
 
@@ -42,3 +42,22 @@ Description: Linaro Automated Validation Architecture dispatcher
  .
  A range of devices are supported for ARM and
  x86 architectures.
+
+Package: lava-lxc-mocker
+Architecture: all
+Depends: ${misc:Depends}
+Conflicts: lxc
+Provides: lxc
+Replaces: lxc
+Description: Linaro Automated Validation Architecture LXC Mocker
+ LAVA is a continuous integration system for deploying operating
+ systems onto physical and virtual hardware for running tests.
+ Tests can be simple boot testing, bootloader testing and system
+ level testing, although extra hardware may be required for some
+ system tests. Results are tracked over time and data can be
+ exported for further analysis.
+ .
+ This package contains set of mocker scripts that mocks each of
+ the lxc commands that LAVA uses. It does not support all commands
+ and options that lxc provides, but just the ones that LAVA uses.
+ Test jobs using LXC can then be replicated in Docker.
