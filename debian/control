@@ -31,7 +31,7 @@ Recommends: ntp, git, tftpd-hpa, openbsd-inetd, ser2net,
  libguestfs-tools (>= 1.32.7) [amd64 i386], nfs-kernel-server, rpcbind,
  python3-setproctitle, u-boot-tools, unzip, xz-utils, lxc (>= 1:2.0.7),
  debootstrap (>= 1.0.86), bridge-utils, rsync, sshfs, dfu-util
-Suggests: apache2, bzr, android-tools-fsutils | img2simg
+Suggests: apache2, bzr, android-tools-fsutils | img2simg, lavacli
 Description: Linaro Automated Validation Architecture dispatcher
  LAVA is a continuous integration system for deploying operating
  systems onto physical and virtual hardware for running tests.
