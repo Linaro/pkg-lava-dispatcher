@@ -1,0 +1,54 @@
+Origin: upstream, https://review.linaro.org/#/c/24910/
+Applied-Upstream: commit e3b0974709cde794a279280b6287ce82f9080ac2
+Author: Neil Williams <neil.williams@linaro.org>
+Date:   Mon Apr 23 11:37:13 2018 +0100
+Description: Fix typo in 86362f and add debug
+    
+    A typo in the unzip change broke the XZ support.
+    Add the downloaded file size to the action results.
+    
+    Change-Id: I9eb7094b47279d3718e80f141b21ec7d4f556bc5
+
+diff --git a/lava_dispatcher/actions/deploy/download.py b/lava_dispatcher/actions/deploy/download.py
+index acdc94fcb..815a07b1e 100644
+--- a/lava_dispatcher/actions/deploy/download.py
++++ b/lava_dispatcher/actions/deploy/download.py
+@@ -272,8 +272,8 @@ class DownloadHandler(Action):  # pylint: disable=too-many-instance-attributes
+                 decompress_command = 'gunzip'
+             elif compression == 'bz2':
+                 decompress_command = 'bunzip2'
+-            elif compression == 'unxz':
+-                decompress_command = 'unzx'
++            elif compression == 'xz':
++                decompress_command = 'unxz'
+             self.logger.debug("Using %s decompression" % compression)
+         else:
+             self.logger.debug("No compression specified.")
+@@ -393,6 +393,7 @@ class DownloadHandler(Action):  # pylint: disable=too-many-instance-attributes
+ 
+         self.results = {
+             'label': self.key,
++            'size': downloaded_size,
+             'md5sum': str(self.get_namespace_data(
+                 action='download-action', label=self.key, key='md5')),
+             'sha256sum': str(self.get_namespace_data(
+diff --git a/lava_dispatcher/actions/deploy/fastboot.py b/lava_dispatcher/actions/deploy/fastboot.py
+index 98e04c29d..1ac291025 100644
+--- a/lava_dispatcher/actions/deploy/fastboot.py
++++ b/lava_dispatcher/actions/deploy/fastboot.py
+@@ -18,6 +18,7 @@
+ # along
+ # with this program; if not, see <http://www.gnu.org/licenses>.
+ 
++import os
+ from lava_dispatcher.logical import Deployment
+ from lava_dispatcher.connections.serial import ConnectDevice
+ from lava_dispatcher.power import (
+@@ -233,6 +234,7 @@ class FastbootFlashAction(Action):
+         if not src:
+             return connection
+         dst = copy_to_lxc(lxc_name, src, self.job.parameters['dispatcher'])
++        self.logger.debug("%s bytes", os.stat(src)[6])
+         sequence = self.job.device['actions']['boot']['methods'].get(
+             'fastboot', [])
+         if 'no-flash-boot' in sequence and self.command in ['boot']:

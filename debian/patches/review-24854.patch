@@ -1,0 +1,40 @@
+Origin: upstream, https://review.linaro.org/#/c/24854/
+Applied-Upstream: commit 86362fd6815428ced92258ff11b55ecb2145303c
+Author: Neil Williams <neil.williams@linaro.org>
+Date:   Thu Apr 19 15:56:03 2018 +0100
+Description: Do not attempt to unzip on the fly
+    
+    .zip archives do not typically decompress on-the-fly and the
+    previous download code did not attempt to decompress .zip at
+    all.
+    Restore this behaviour for zip compression in the download
+    handler.
+    
+    Change-Id: Ide128f5824743aa2ff82c3b646f4707e0d3ea2f3
+
+diff --git a/lava_dispatcher/actions/deploy/download.py b/lava_dispatcher/actions/deploy/download.py
+index 67121874d..acdc94fcb 100644
+--- a/lava_dispatcher/actions/deploy/download.py
++++ b/lava_dispatcher/actions/deploy/download.py
+@@ -272,10 +272,8 @@ class DownloadHandler(Action):  # pylint: disable=too-many-instance-attributes
+                 decompress_command = 'gunzip'
+             elif compression == 'bz2':
+                 decompress_command = 'bunzip2'
+-            elif compression == 'zip':
+-                decompress_command = 'unzip'
+-            else:
+-                decompress_command = 'unxz'
++            elif compression == 'unxz':
++                decompress_command = 'unzx'
+             self.logger.debug("Using %s decompression" % compression)
+         else:
+             self.logger.debug("No compression specified.")
+@@ -291,7 +289,7 @@ class DownloadHandler(Action):  # pylint: disable=too-many-instance-attributes
+             md5.update(buff)
+             sha256.update(buff)
+ 
+-        if compression:
++        if compression and decompress_command:
+             try:
+                 with open(fname, 'wb') as dwnld_file:
+                     proc = subprocess.Popen([decompress_command],
